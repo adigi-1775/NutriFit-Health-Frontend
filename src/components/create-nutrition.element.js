@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class CreateExercise extends Component {
+export default class CreateNutrition extends Component {
   constructor(props) {
   super(props);
   this.onChangeUsername = this.onChangeUsername.bind(this);
-  this.onChangeExerciseName = this.onChangeExerciseName.bind(this);
+  this.onChangeMeal = this.onChangeMeal.bind(this);
   this.onChangeDescription = this.onChangeDescription.bind(this);
-  this.onChangeDuration = this.onChangeDuration.bind(this);
+  this.onChangeCalories = this.onChangeCalories.bind(this);
   this.onSubmit = this.onSubmit.bind(this);
+
   this.state = {
     username: '',
-    exerciseName: '',
+    meal: '',
     description: '',
-    duration: 0,
+    calories: 0,
     users: [],
   }
 }
 
 componentDidMount() {
-  this.setState({
     axios.get('http://localhost:5000/user/')
   .then(response => {
     if (response.data.length > 0) {
@@ -31,17 +31,18 @@ componentDidMount() {
   })
   .catch((error) => {
     // console.log(error);
-})
-  });
-}
+})}
+
+
+
 onChangeUsername(e) {
   this.setState({
     username: e.target.value
   });
 }
-onChangeExerciseName(e) {
+onChangeMeal(e) {
   this.setState({
-    exerciseName: e.target.value
+    meal: e.target.value
   });
 }
 onChangeDescription(e) {
@@ -49,21 +50,21 @@ onChangeDescription(e) {
     description: e.target.value
   });
 }
-onChangeDuration(e) {
+onChangeCalories(e) {
   this.setState({
-    duration: e.target.value
+    calories: e.target.value
   });
 }
 onSubmit(e) {
   e.preventDefault();
   const exercise = {
     username: this.state.username,
-    exerciseName: this.state.exerciseName,
+    meal: this.state.meal,
     description: this.state.description,
-    duration: this.state.duration,
+    calories: this.state.calories,
   };
-// console.log(exercise);
-axios.post('http://localhost:5000/exercise/add', exercise)
+// console.log(nutrition);
+axios.post('http://localhost:5000/nutrition/add', exercise)
   .then(res => console.log(res.data));
 window.location = '/';
 }
@@ -71,7 +72,7 @@ window.location = '/';
 render() {
     return (
       <div>
-        <h3>Create New Exercise Log</h3>
+        <h3>Create New Nutrition Log</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Username: </label>
@@ -91,12 +92,12 @@ render() {
             </select>
           </div>
           <div className="form-group">
-            <label>Exercise Name: </label>
+            <label>Nutrition Name: </label>
             <input
                 type="text"
                 className="form-control"
-                value={this.state.exerciseName}
-                onChange={this.onChangeExerciseName}
+                value={this.state.meal}
+                onChange={this.onChangeMeal}
                 />
           </div>
           <div className="form-group">
@@ -109,17 +110,17 @@ render() {
                 />
           </div>
           <div className="form-group">
-            <label>Duration (in minutes/sets): </label>
+            <label>Calories: </label>
             <input
                 type="text"
                 className="form-control"
-                value={this.state.duration}
-                onChange={this.onChangeDuration}
+                value={this.state.calories}
+                onChange={this.onChangeCalories}
                 />
           </div>
 
           <div className="form-group">
-            <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
+            <input type="submit" value="Create Nutrition Log" className="btn btn-primary" />
           </div>
         </form>
       </div>
