@@ -1,7 +1,6 @@
 import React, { Component, Button } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import Nutrition from './Nutrition';
 
 const Nutrition = props => (
   <tr>
