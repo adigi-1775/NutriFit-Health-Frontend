@@ -1,18 +1,7 @@
 import React, { Component, Button } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
-const Nutrition = props => (
-  <tr>
-    <td>{props.nutrition.username}</td>
-    <td>{props.nutrition.exerciseName}</td>
-    <td>{props.nutrition.description}</td>
-    <td>{props.nutrition.duration}</td>
-    <td>
-      <Link to={"/edit/"+props.nutrition._id}>edit</Link> | <Button onClick={() => { props.deleteNutrition(props.nutrition._id) }}>delete</Button>
-    </td>
-  </tr>
-)
+import Nutrition from './Nutrition.js';
 
   export default class NutritionList extends Component {
     constructor(props) {
@@ -21,10 +10,11 @@ const Nutrition = props => (
     this.state = {nutrition: []};
   }
   componentDidMount() {
+    console.log(Nutrition);
     axios.get('http://localhost:5000/nutrition/')
      .then(response => {
        console.log(response.data)
-       this.setState({ nutrition: response.data });
+       // this.setState({ nutrition: response.data });
      })
      .catch((error) => {
         console.log(error);
@@ -37,13 +27,19 @@ const Nutrition = props => (
       nutrition: this.state.nutrition.filter(el => el._id !== id)
     })
   }
-  nutritionList() {
-    return this.state.nutrition.map(currentnutrition => {
-      return <Nutrition nutrition={currentnutrition} deleteNutrition={this.deleteNutrition} key={currentnutrition._id}/>;
-    })
-  }
+  // nutritionList(currentnutrition){
+  //   console.log(currentnutrition);
+  //     return <Nutrition
+  //     nutrition={currentnutrition}
+  //     // deleteNutrition={NutritionList.deleteNutrition}
+  //     key={currentnutrition._id}
+  //     />;
+  //   }
 
   render() {
+    console.log('heres our state');
+    console.log(this.state);
+
     return (
       <div>
         <h3>Logged Nutrition</h3>
@@ -57,7 +53,20 @@ const Nutrition = props => (
             </tr>
           </thead>
           <tbody>
-            { this.nutritionList() }
+            {this.state.nutrition.map((item) => {
+              console.log(item);
+              return(
+              <tr>
+                <td>{item.username}</td>
+                <td>{item.meal}</td>
+                <td>{item.description}</td>
+                <td>{item.calories}</td>
+                <td>
+                  <Link to={"/edit/"+item._id}>edit</Link> |
+                  <Button onClick={() => { this.deleteNutrition(item._id) }}>delete</Button>
+                </td>
+              </tr>
+            )})}
           </tbody>
         </table>
       </div>
