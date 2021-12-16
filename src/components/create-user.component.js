@@ -30,12 +30,14 @@ onSubmit(e) {
 }
   render() {
     return (
-      <div>
-        <h3>Create New User</h3>
+      <div class="text-center">
+        <h2>Create New User</h2><br />
+        <p class="fs-5">Create a unique username to show off your nutrition and fitness knowledge! Your username will be displayed with all the information you post in our logs!</p>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <br /><label>Username: </label>
+            <br /><label class="fs-2">Username: </label>
             <input  type="text"
+                placeholder="Enter username"
                 required
                 className="form-control"
                 value={this.state.username}

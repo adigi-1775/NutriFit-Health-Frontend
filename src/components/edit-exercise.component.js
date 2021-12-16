@@ -79,19 +79,12 @@ export default class EditExercise extends Component {
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Username: </label>
-            <select ref="userInput"
+            <input  type="text"
+                required
                 className="form-control"
                 value={this.state.username}
-                onChange={this.onChangeUsername}>
-                {
-                  this.state.user.map(function(user) {
-                    return <option
-                      key={user}
-                      value={user}>{user}
-                      </option>;
-                  })
-                }
-            </select>
+                onChange={this.onChangeUsername}
+                />
           </div>
           <div className="form-group">
             <label>Description: </label>
@@ -119,7 +112,7 @@ export default class EditExercise extends Component {
                 value={this.state.duration}
                 onChange={this.onChangeDuration}
                 />
-          </div>
+          </div><br />
           <div className="form-group">
             <input type="submit" value="Edit Exercise Log" className="btn btn-primary" />
           </div>

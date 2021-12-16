@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
-// import images from './images';
+import Image from 'react-bootstrap/Image';
 // import Nutrition from './Nutrition.js';
 
   export default class NutritionList extends Component {
@@ -41,8 +41,8 @@ import axios from 'axios';
     console.log('heres our nutrition state');
     console.log(this.state);
     return (
-      <div>
-        <h3>Logged Nutrition</h3>
+      <div class="text-center" >
+        <h3>Logged Nutrition</h3><br />
         <table className="table">
           <thead className="thead-light">
             <tr>
@@ -59,11 +59,11 @@ import axios from 'axios';
               <tr>
                 <td>{item.username}</td>
                 <td>{item.meal}</td>
-                <td>{item.description}</td>
+                <td class="table-primary">{item.description}</td>
                 <td>{item.calories}</td>
                 <td>
-                  <Link to={"/edit/"+item._id}>edit</Link> |
-                  <button onClick={() => { this.deleteNutrition(item._id) }}>delete</button>
+                  <Link className="btn bg-info text-light font-welcome-buttons" to={"/edit/"+item._id}>Edit</Link></td>
+                  <td><button className="btn bg-danger text-light font-welcome-buttons" onClick={() => { this.deleteNutrition(item._id) }}>Delete</button>
                 </td>
               </tr>
             )})}

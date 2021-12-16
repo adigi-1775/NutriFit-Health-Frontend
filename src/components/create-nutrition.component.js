@@ -70,24 +70,16 @@ render() {
         <h3>Create New Nutrition Log</h3>
         <br /><form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <br /><label>Username: </label>
-            <select ref="userInput"
-                required
+            <br /><label class="fs-5">Username: </label>
+            <input
+                type="text"
                 className="form-control"
                 value={this.state.username}
-                onChange={this.onChangeUsername}>
-                {
-                  this.state.users.map(function(user) {
-                    return <option
-                      key={user}
-                      value={user}>{user}
-                      </option>;
-                  })
-                }
-            </select>
+                onChange={this.onChangeUsername}
+                />
           </div>
           <div className="form-group">
-            <br /><label>Nutrition Name: </label>
+            <br /><label class="fs-5">Nutrition Name: </label>
             <input
                 type="text"
                 className="form-control"
@@ -96,7 +88,7 @@ render() {
                 />
           </div>
           <div className="form-group">
-            <br /><label>Description: </label>
+            <br /><label class="fs-5">Description: </label>
             <input  type="text"
                 required
                 className="form-control"
@@ -105,7 +97,7 @@ render() {
                 />
           </div>
           <div className="form-group">
-            <br /><label>Calories: </label>
+            <br /><label class="fs-5">Calories: </label>
             <input
                 type="text"
                 className="form-control"

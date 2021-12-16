@@ -41,8 +41,8 @@ import axios from 'axios';
     console.log('heres our exercise state');
     console.log(this.state.exercise);
     return (
-      <div className="exerciselist-render">
-        <h3>Logged Exercises</h3>
+      <div class="text-center">
+        <h3>Logged Exercises</h3><br />
         <table className="table">
           <thead className="thead-light">
             <tr>
@@ -54,18 +54,19 @@ import axios from 'axios';
           </thead>
           <tbody>
             {this.state.exercise.map((item) => {
-              console.log(item.exerciseName);
-              console.log(item.description);
-              console.log(item.duration);
+              // console.log(item.exerciseName);
+              // console.log(item.description);
+              // console.log(item.duration);
               return(
               <tr>
-                <td>'ant'</td>
+                <td>{item.username}</td>
                 <td>{item.exerciseName}</td>
                 <td>{item.description}</td>
                 <td>{item.duration}</td>
                 <td>
-                  <Link to={"/edit-exercise/:id"+item._id}>edit</Link><br />
-                  <br /><button onClick={() => { this.deleteExercise(item._id)}}>delete</button>
+                  <Link className="btn bg-info text-light font-welcome-buttons" to={"/edit-exercise/:id"+item._id}>Edit</Link></td><br />
+                  <br />
+                  <td><button className="btn bg-danger text-light font-welcome-buttons" onClick={() => { this.deleteExercise(item._id)}}>Delete</button>
                 </td>
               </tr>
             )})}

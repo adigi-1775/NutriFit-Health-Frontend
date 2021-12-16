@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
 import { signup, useAuth } from "../../firebase.js"
+import { Link } from 'react-router-dom';
+
 
 export default function App() {
   const [ loading, setLoading ] = useState(false);
@@ -22,11 +23,11 @@ export default function App() {
 
   return (
 
-<body id="main">
+<body id="main" class="text-center">
     <div class="login-form">
     <form>
-      <h1>Register</h1>
-      <div>Currently logged in as: { currentUser?.email } </div>
+      <h1>NutriFit-Health Registration</h1><br />
+      <h2>Register Below</h2><br />
       <div class="form-group">
         <input id="username" ref={emailRef} placeholder="Email" />
         <span class="input-icon"><i class="fa fa-envelope"></i></span>
@@ -36,8 +37,9 @@ export default function App() {
       <span class="input-icon"><i class="fa fa-lock"></i></span>
       </div>
       </form><br />
-      <Button  class="login-btn" disabled={ loading || currentUser } onClick={handleSignup}>Register</Button><br />
-      <br /><Button class="home-btn" type="submit" onClick="">Back</Button>
+      <button className="login-btn btn bg-success text-light font-welcome-buttons" disabled={ loading || currentUser } onClick={handleSignup}>Register</button><br />
+      <br />
+      <Link className="btn bg-primary text-light font-welcome-buttons" class="home-btn" to={"/HomePage"}>Back</Link>
     </div>
     </body>
   );

@@ -31,9 +31,9 @@ export default function App() {
   }
 
   return (
-    <div id="main">
+    <div id="main" class="text-center">
       <div>
-      <h1>Welcome to NutriFit-Health!</h1>
+      <h1>NutriFit-Health Login/Logout</h1>
       </div><br />
 
       <div><h2>Currently logged in as: { currentUser?.email }</h2> </div><br />
@@ -44,7 +44,7 @@ export default function App() {
       </div>
       <br />
 
-      <Button disabled={ loading || currentUser } onClick={handleLogin}>Log In</Button><br />
+      <button className="login-btn btn bg-success text-light font-welcome-buttons" disabled={ loading || currentUser } onClick={handleLogin}>Log In</button><br />
       <br /><Button disabled={ loading || !currentUser } onClick={handleLogout}>Log Out</Button>
 
     </div>
