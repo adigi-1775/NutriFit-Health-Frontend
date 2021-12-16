@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 
 export default class CreateUser extends Component {
@@ -10,7 +11,6 @@ export default class CreateUser extends Component {
     username: ''
   };
 }
-
 onChangeUsername(e) {
   this.setState({
     username: e.target.value
@@ -28,7 +28,6 @@ onSubmit(e) {
     username: ''
   })
 }
-
   render() {
     return (
       <div>

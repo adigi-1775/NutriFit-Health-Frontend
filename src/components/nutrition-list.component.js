@@ -1,7 +1,8 @@
-import React, { Component, Button } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
-import Nutrition from './Nutrition.js';
+// import Nutrition from './Nutrition.js';
 
   export default class NutritionList extends Component {
     constructor(props) {
@@ -10,11 +11,11 @@ import Nutrition from './Nutrition.js';
     this.state = {nutrition: []};
   }
   componentDidMount() {
-    console.log(Nutrition);
+    // console.log(Nutrition);
     axios.get('http://localhost:5000/nutrition/')
      .then(response => {
        console.log(response.data)
-       // this.setState({ nutrition: response.data });
+       this.setState({ nutrition: response.data });
      })
      .catch((error) => {
         console.log(error);
@@ -31,15 +32,13 @@ import Nutrition from './Nutrition.js';
   //   console.log(currentnutrition);
   //     return <Nutrition
   //     nutrition={currentnutrition}
-  //     // deleteNutrition={NutritionList.deleteNutrition}
+  //     deleteNutrition={NutritionList.deleteNutrition}
   //     key={currentnutrition._id}
   //     />;
   //   }
-
   render() {
-    console.log('heres our state');
+    console.log('heres our nutrition state');
     console.log(this.state);
-
     return (
       <div>
         <h3>Logged Nutrition</h3>
@@ -63,7 +62,7 @@ import Nutrition from './Nutrition.js';
                 <td>{item.calories}</td>
                 <td>
                   <Link to={"/edit/"+item._id}>edit</Link> |
-                  <Button onClick={() => { this.deleteNutrition(item._id) }}>delete</Button>
+                  <button onClick={() => { this.deleteNutrition(item._id) }}>delete</button>
                 </td>
               </tr>
             )})}

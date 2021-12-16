@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class EditNutrition extends Component {
   constructor(props) {
     super(props);
-
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangeMeal = this.onChangeMeal.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeCalories = this.onChangeCalories.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-
     this.state = {
       username: '',
       meal: '',
@@ -19,7 +18,6 @@ export default class EditNutrition extends Component {
       users: []
     }
   }
-
   componentDidMount() {
     axios.get('http://localhost:5000/nutrition/'+this.props.match.params.id)
       .then(response => {
@@ -33,7 +31,6 @@ export default class EditNutrition extends Component {
       .catch(function (error) {
         console.log(error);
       })
-
     axios.get('http://localhost:5000/user/')
       .then(response => {
         this.setState({ user: response.data.map(user => user.username) });
@@ -42,49 +39,39 @@ export default class EditNutrition extends Component {
         console.log(error);
       })
   }
-
   onChangeUsername(e) {
     this.setState({
       username: e.target.value
     });
   }
-
   onChangeMeal(e) {
     this.setState({
       meal: e.target.value
     });
   }
-
   onChangeDescription(e) {
     this.setState({
       description: e.target.value
     });
   }
-
   onChangeCaloreis(e) {
     this.setState({
       calories: e.target.value
     });
   }
-
   onSubmit(e) {
     e.preventDefault();
-
     const nutrition = {
       username: this.state.username,
       meal: this.state.meal,
       description: this.state.description,
       calories: this.state.calories,
     };
-
     console.log(nutrition);
-
     axios.post('http://localhost:5000/nutrition/update/'+this.props.match.params.id, nutrition)
       .then(res => console.log(res.data));
-
     window.location = '/';
   }
-
   render() {
     return (
       <div>

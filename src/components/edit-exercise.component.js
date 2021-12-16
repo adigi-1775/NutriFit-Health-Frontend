@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class EditExercise extends Component {
   constructor(props) {
     super(props);
-
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangeExerciseName = this.onChangeExerciseName.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeDuration = this.onChangeDuration.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-
     this.state = {
       username: '',
       exerciseName: '',
@@ -19,7 +18,6 @@ export default class EditExercise extends Component {
       users: []
     }
   }
-
   componentDidMount() {
     axios.get('http://localhost:5000/exercise/'+this.props.match.params.id)
       .then(response => {
@@ -33,7 +31,6 @@ export default class EditExercise extends Component {
       .catch(function (error) {
         console.log(error);
       })
-
     axios.get('http://localhost:5000/user/')
       .then(response => {
         this.setState({ user: response.data.map(user => user.username) });
@@ -42,49 +39,39 @@ export default class EditExercise extends Component {
         console.log(error);
       })
   }
-
   onChangeUsername(e) {
     this.setState({
       username: e.target.value
     });
   }
-
   onChangeExerciseName(e) {
     this.setState({
       exerciseName: e.target.value
     });
   }
-
   onChangeDescription(e) {
     this.setState({
       description: e.target.value
     });
   }
-
   onChangeDuration(e) {
     this.setState({
       duration: e.target.value
     });
   }
-
   onSubmit(e) {
     e.preventDefault();
-
     const exercise = {
       username: this.state.username,
       exerciseName: this.state.exerciseName,
       description: this.state.description,
       duration: this.state.duration,
     };
-
     console.log(exercise);
-
     axios.post('http://localhost:5000/exercise/update/'+this.props.match.params.id, exercise)
       .then(res => console.log(res.data));
-
     window.location = '/';
   }
-
   render() {
     return (
       <div>

@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
-import { signup, useAuth } from "/Users/anthonydigiammarino/Desktop/NutriFit-App/NutriFit-Health-Frontend/src/firebase.js"
+import { signup, useAuth } from "../../firebase.js"
 
 export default function App() {
   const [ loading, setLoading ] = useState(false);
@@ -30,14 +30,14 @@ export default function App() {
       <div class="form-group">
         <input id="username" ref={emailRef} placeholder="Email" />
         <span class="input-icon"><i class="fa fa-envelope"></i></span>
-      </div>
+      </div><br />
       <div class="form-group">
       <input id="password" ref={passwordRef} type="password" placeholder="Password" />
       <span class="input-icon"><i class="fa fa-lock"></i></span>
       </div>
-      </form>
-      <Button  class="login-btn" disabled={ loading || currentUser } onClick={handleSignup}>Register</Button>
-      <Button class="home-btn" type="submit" onClick="">Back</Button>
+      </form><br />
+      <Button  class="login-btn" disabled={ loading || currentUser } onClick={handleSignup}>Register</Button><br />
+      <br /><Button class="home-btn" type="submit" onClick="">Back</Button>
     </div>
     </body>
   );

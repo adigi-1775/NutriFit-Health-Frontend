@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class CreateNutrition extends Component {
   constructor(props) {
@@ -9,7 +10,6 @@ export default class CreateNutrition extends Component {
   this.onChangeDescription = this.onChangeDescription.bind(this);
   this.onChangeCalories = this.onChangeCalories.bind(this);
   this.onSubmit = this.onSubmit.bind(this);
-
   this.state = {
     username: '',
     meal: '',
@@ -18,7 +18,6 @@ export default class CreateNutrition extends Component {
     users: [],
   }
 }
-
 componentDidMount() {
     axios.get('http://localhost:5000/user/')
   .then(response => {
@@ -32,9 +31,6 @@ componentDidMount() {
   .catch((error) => {
     // console.log(error);
 })}
-
-
-
 onChangeUsername(e) {
   this.setState({
     username: e.target.value
@@ -68,14 +64,13 @@ axios.post('http://localhost:5000/nutrition/add', exercise)
   .then(res => console.log(res.data));
 window.location = '/';
 }
-
 render() {
     return (
       <div>
         <h3>Create New Nutrition Log</h3>
-        <form onSubmit={this.onSubmit}>
+        <br /><form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Username: </label>
+            <br /><label>Username: </label>
             <select ref="userInput"
                 required
                 className="form-control"
@@ -92,7 +87,7 @@ render() {
             </select>
           </div>
           <div className="form-group">
-            <label>Nutrition Name: </label>
+            <br /><label>Nutrition Name: </label>
             <input
                 type="text"
                 className="form-control"
@@ -101,7 +96,7 @@ render() {
                 />
           </div>
           <div className="form-group">
-            <label>Description: </label>
+            <br /><label>Description: </label>
             <input  type="text"
                 required
                 className="form-control"
@@ -110,7 +105,7 @@ render() {
                 />
           </div>
           <div className="form-group">
-            <label>Calories: </label>
+            <br /><label>Calories: </label>
             <input
                 type="text"
                 className="form-control"
@@ -119,7 +114,7 @@ render() {
                 />
           </div>
 
-          <div className="form-group">
+          <br /><div className="form-group">
             <input type="submit" value="Create Nutrition Log" className="btn btn-primary" />
           </div>
         </form>
