@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
+// import images from './images';
 // import Nutrition from './Nutrition.js';
 
   export default class NutritionList extends Component {
