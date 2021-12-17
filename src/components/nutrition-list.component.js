@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
-import Image from 'react-bootstrap/Image';
-// import Nutrition from './Nutrition.js';
+// import healthfood from '/public/images/healthfood.jpg'
+// import Nutrition from './Nutrition.js'
 
   export default class NutritionList extends Component {
     constructor(props) {
@@ -13,6 +13,7 @@ import Image from 'react-bootstrap/Image';
   }
   componentDidMount() {
     // console.log(Nutrition);
+    this.props.setbgimage('images/fruitbowl.jpg')
     axios.get('http://localhost:5000/nutrition/')
      .then(response => {
        console.log(response.data)
@@ -41,30 +42,30 @@ import Image from 'react-bootstrap/Image';
     console.log('heres our nutrition state');
     console.log(this.state);
     return (
-      <div class="text-center" >
-        <h3>Logged Nutrition</h3><br />
-        <table className="table">
+      <div class="text-center"><br />
+        <br /><h1>Logged Nutrition</h1><br />
+        <br /><table className="table table-bordered table-success opacity-75">
           <thead className="thead-light">
             <tr>
               <th>Username</th>
               <th>Meal</th>
               <th>Description</th>
               <th>Calories</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             {this.state.nutrition.map((item) => {
-              console.log(item);
               return(
               <tr>
                 <td>{item.username}</td>
                 <td>{item.meal}</td>
-                <td class="table-primary">{item.description}</td>
+                <td>{item.description}</td>
                 <td>{item.calories}</td>
                 <td>
-                  <Link className="btn bg-info text-light font-welcome-buttons" to={"/edit/"+item._id}>Edit</Link></td>
-                  <td><button className="btn bg-danger text-light font-welcome-buttons" onClick={() => { this.deleteNutrition(item._id) }}>Delete</button>
-                </td>
+                  <Link className="btn bg-info text-light font-welcome-buttons text-dark" to={"/edit-nutrition/:id"+item._id}>Edit</Link></td>
+                  <td><button className="btn bg-danger text-light font-welcome-buttons text-dark" onClick={() => { this.deleteNutrition(item._id) }}>Delete</button></td>
               </tr>
             )})}
           </tbody>

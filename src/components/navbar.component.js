@@ -5,9 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default class Navbar extends Component {
   render() {
     return (
+    <div className="collpase navbar-collapse d-flex justify-content-evenly">  
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
         <Link to="/HomePage" className="navbar-brand">NutriFit-Health</Link>
-        <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">
           <li className="navbar-item">
           <Link to="/user" className="nav-link">Create User</Link>
@@ -31,8 +31,8 @@ export default class Navbar extends Component {
           <Link to="/register" className="nav-link">Register</Link>
           </li>
         </ul>
-        </div>
       </nav>
+    </div>
     );
   }
 }

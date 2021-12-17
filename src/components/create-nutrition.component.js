@@ -19,6 +19,7 @@ export default class CreateNutrition extends Component {
   }
 }
 componentDidMount() {
+    this.props.setbgimage('images/prep.jpg')
     axios.get('http://localhost:5000/user/')
   .then(response => {
     if (response.data.length > 0) {
@@ -66,11 +67,11 @@ window.location = '/';
 }
 render() {
     return (
-      <div>
-        <h3>Create New Nutrition Log</h3>
+      <div><br />
+        <br /><h1 class="text-white text-center">Create New Nutrition Log</h1>
         <br /><form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <br /><label class="fs-5">Username: </label>
+            <br /><label class="fs-5 text-white">Username: </label>
             <input
                 type="text"
                 className="form-control"
@@ -79,7 +80,7 @@ render() {
                 />
           </div>
           <div className="form-group">
-            <br /><label class="fs-5">Nutrition Name: </label>
+            <br /><label class="fs-5 text-white">Nutrition Name: </label>
             <input
                 type="text"
                 className="form-control"
@@ -88,7 +89,7 @@ render() {
                 />
           </div>
           <div className="form-group">
-            <br /><label class="fs-5">Description: </label>
+            <br /><label class="fs-5 text-white">Description: </label>
             <input  type="text"
                 required
                 className="form-control"
@@ -97,7 +98,7 @@ render() {
                 />
           </div>
           <div className="form-group">
-            <br /><label class="fs-5">Calories: </label>
+            <br /><label class="fs-5 text-white">Calories: </label>
             <input
                 type="text"
                 className="form-control"

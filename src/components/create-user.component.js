@@ -11,6 +11,9 @@ export default class CreateUser extends Component {
     username: ''
   };
 }
+componentDidMount() {
+    this.props.setbgimage('images/greens.jpg')
+}
 onChangeUsername(e) {
   this.setState({
     username: e.target.value
@@ -30,8 +33,8 @@ onSubmit(e) {
 }
   render() {
     return (
-      <div class="text-center">
-        <h2>Create New User</h2><br />
+      <div class="text-center"><br />
+        <br /><h1>Create New User</h1><br />
         <p class="fs-5">Create a unique username to show off your nutrition and fitness knowledge! Your username will be displayed with all the information you post in our logs!</p>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">

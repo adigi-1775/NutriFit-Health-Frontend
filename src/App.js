@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/navbar.component"
@@ -14,25 +14,35 @@ import Login from "./components/Authentication/Login"
 import Register from "./components/Authentication/Register"
 
 function App() {
+  const [bgimage, setbgimage] = useState()
+  const makeBGImg = ()=>{
+    let url = `url('${bgimage}')`
+    return(
+      {backgroundImage: url}
+    )
+  }
+  makeBGImg()
   return (
+    <div className="bgimage" style={makeBGImg()}>
     <Router>
       <div className="container">
         <Navbar />
           <br/>
           <Switch>
-              <Route path="/edit-exercise/:id" component ={EditExercise} />
-              <Route path="/edit-nutrition/:id" component ={EditNutrition} />
-              <Route path="/create-exercise" component ={CreateExercise} />
-              <Route path="/create-nutrition" component ={CreateNutrition} />
-              <Route path="/user" component ={CreateUser} />
-              <Route path="/nutrition" component ={NutritionList} />
-              <Route path="/exercise" component ={ExerciseList} />
-              <Route path="/login" component ={Login} />
-              <Route path="/register" component ={Register} />
-              <Route path="/" component ={HomePage} />
+              <Route path="/edit-exercise/:id" ><EditExercise setbgimage={setbgimage} /></Route>
+              <Route path="/edit-nutrition/:id" ><EditNutrition setbgimage={setbgimage} /></Route>
+              <Route path="/create-exercise" ><CreateExercise setbgimage={setbgimage} /></Route>
+              <Route path="/create-nutrition" ><CreateNutrition setbgimage={setbgimage} /></Route>
+              <Route path="/user" ><CreateUser setbgimage={setbgimage} /></Route>
+              <Route path="/nutrition" ><NutritionList setbgimage={setbgimage} /></Route>
+              <Route path="/exercise" ><ExerciseList setbgimage={setbgimage} /></Route>
+              <Route path="/login" ><Login setbgimage={setbgimage} /></Route>
+              <Route path="/register" ><Register setbgimage={setbgimage} /></Route>
+              <Route path="/" ><HomePage setbgimage={setbgimage} /></Route>
           </Switch>
       </div>
     </Router>
+    </div>
   );
 }
 
