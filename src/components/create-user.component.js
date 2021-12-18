@@ -25,7 +25,7 @@ onSubmit(e) {
     username: this.state.username,
   };
   // console.log(newUser);
-  axios.post('http://localhost:5000/user/add', newUser)
+  axios.post('https://thawing-dawn-15827.herokuapp.com/user/add', newUser)
   .then(res => console.log(res.data));
   this.setState({
     username: ''

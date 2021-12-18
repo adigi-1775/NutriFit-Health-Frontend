@@ -20,7 +20,7 @@ export default class CreateNutrition extends Component {
 }
 componentDidMount() {
     this.props.setbgimage('images/prep.jpg')
-    axios.get('http://localhost:5000/user/')
+    axios.get('https://thawing-dawn-15827.herokuapp.com/user/')
   .then(response => {
     if (response.data.length > 0) {
       this.setState({
@@ -61,7 +61,7 @@ onSubmit(e) {
     calories: this.state.calories,
   };
 // console.log(nutrition);
-axios.post('http://localhost:5000/nutrition/add', exercise)
+axios.post('https://thawing-dawn-15827.herokuapp.com/nutrition/add', exercise)
   .then(res => console.log(res.data));
 window.location = '/';
 }

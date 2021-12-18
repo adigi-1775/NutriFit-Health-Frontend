@@ -18,7 +18,7 @@ export default function EditNutrition(props) {
   }
   function onSubmit(e) {
     e.preventDefault();
-    axios.put(`http://localhost:5000/nutrition/update/${id}`, body)
+    axios.put(`https://thawing-dawn-15827.herokuapp.com/nutrition/update/${id}`, body)
       .then(res =>
         {
           console.log(res)
