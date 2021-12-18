@@ -18,7 +18,7 @@ export default function EditNutrition(props) {
   }
   function onSubmit(e) {
     e.preventDefault();
-    axios.put(`https://localhost:5000.com/nutrition/update/${id}`, body)
+    axios.put(process.env.REACT_APP_BACKEND_URL + `/nutrition/update/${id}`, body)
       .then(res =>
         {
           console.log(res)

@@ -14,7 +14,7 @@ import axios from 'axios';
   componentDidMount() {
     // console.log(Nutrition);
     this.props.setbgimage('images/fruitbowl.jpg')
-    axios.get('https://localhost:5000.com/nutrition')
+    axios.get(process.env.REACT_APP_BACKEND_URL)
      .then(response => {
        console.log(response.data)
        this.setState({ nutrition: response.data });
@@ -24,7 +24,7 @@ import axios from 'axios';
      })
   }
   deleteNutrition(id) {
-    axios.delete('https://localhost:5000.com/nutrition/'+id)
+    axios.delete(process.env.REACT_APP_BACKEND_URL + '/nutrition/'+id)
       .then(res => console.log(res.data));
     this.setState({
       nutrition: this.state.nutrition.filter(el => el._id !== id)

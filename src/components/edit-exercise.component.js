@@ -18,7 +18,7 @@ export default function EditExercise() {
   }
   function onSubmit(e) {
     e.preventDefault();
-    axios.put(`https://localhost:5000.com/exercise/update/${id}`, body)
+    axios.put(process.env.REACT_APP_BACKEND_URL + `/exercise/update/${id}`, body)
       .then(res =>
         {
           console.log(res)

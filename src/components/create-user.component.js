@@ -25,7 +25,7 @@ onSubmit(e) {
     username: this.state.username,
   };
   // console.log(newUser);
-  axios.post('https://localhost:5000.com/user/add', newUser)
+  axios.post(process.env.REACT_APP_BACKEND_URL + '/user/add', newUser)
   .then(res => console.log(res.data));
   this.setState({
     username: ''

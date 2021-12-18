@@ -13,7 +13,7 @@ import axios from 'axios';
   componentDidMount() {
     // console.log(Nutrition);
     this.props.setbgimage('images/squat.jpg')
-    axios.get('https://localhost:5000.com/exercise/')
+    axios.get(process.env.REACT_APP_BACKEND_URL + '/exercise/')
      .then(response => {
        console.log(response.data)
        this.setState({ exercise: response.data });
@@ -24,7 +24,7 @@ import axios from 'axios';
   }
   deleteExercise(id) {
     console.log(id);
-    axios.delete('https://localhost:5000.com/exercise/'+id)
+    axios.delete(process.env.REACT_APP_BACKEND_URL + '/exercise/'+id)
       .then(res => console.log(res.data));
     this.setState({
       exercise: this.state.exercise.filter(el => el._id !== id)

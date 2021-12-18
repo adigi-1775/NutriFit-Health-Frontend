@@ -20,7 +20,7 @@ export default class CreateExercise extends Component {
 }
 componentDidMount() {
     this.props.setbgimage('images/gymequip.jpg')
-    axios.get('https://localhost:5000.com/user/')
+    axios.get(process.env.REACT_APP_BACKEND_URL + '/user/')
   .then(response => {
     if (response.data.length > 0) {
       this.setState({
@@ -61,7 +61,7 @@ onSubmit(e) {
     duration: this.state.duration,
   };
 // console.log(exercise);
-axios.post('https://localhost:5000.com/exercise/add', exercise)
+axios.post(process.env.REACT_APP_BACKEND_URL + '/exercise/add', exercise)
   .then(res => console.log(res.data));
 }
 render() {
