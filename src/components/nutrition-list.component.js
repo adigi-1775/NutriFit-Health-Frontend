@@ -14,7 +14,7 @@ import axios from 'axios';
   componentDidMount() {
     // console.log(Nutrition);
     this.props.setbgimage('images/fruitbowl.jpg')
-    axios.get(process.env.REACT_APP_BACKEND_URL)
+    axios.get(process.env.REACT_APP_BACKEND_URL + /nutrition/)
      .then(response => {
        console.log(response.data)
        this.setState({ nutrition: response.data });
