@@ -1,123 +1,79 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useParams, Redirect } from 'react-router-dom';
 
-export default class EditExercise extends Component {
-  constructor(props) {
-    super(props);
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeExerciseName = this.onChangeExerciseName.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeDuration = this.onChangeDuration.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.state = {
-      username: '',
-      exerciseName: '',
-      description: '',
-      duration: 0,
-      users: []
-    }
+export default function EditExercise() {
+  const {id} = useParams()
+  const [postComplete, setPostComplete] = useState(false)
+  const [body, setBody] = useState({
+    username: '',
+    exerciseName: '',
+    description: '',
+    duration: 0
+  })
+  function onChangeUpdateBody(e){
+    const copyBody = {...body, [e.target.name]:e.target.value}
+    setBody(copyBody)
   }
-  componentDidMount() {
-    axios.get('http://localhost:5000/edit-exercise/:id' + this.props.match.params.id)
-      .then(response => {
-        this.setState({
-          username: response.data.username,
-          exerciseName: response.data.exerciseName,
-          description: response.data.description,
-          duration: response.data.duration,
-        })
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-    axios.get('http://localhost:5000/user/')
-      .then(response => {
-        this.setState({ user: response.data.map(user => user.username) });
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value
-    });
-  }
-  onChangeExerciseName(e) {
-    this.setState({
-      exerciseName: e.target.value
-    });
-  }
-  onChangeDescription(e) {
-    this.setState({
-      description: e.target.value
-    });
-  }
-  onChangeDuration(e) {
-    this.setState({
-      duration: e.target.value
-    });
-  }
-  onSubmit(e) {
+  function onSubmit(e) {
     e.preventDefault();
-    const exercise = {
-      username: this.state.username,
-      exerciseName: this.state.exerciseName,
-      description: this.state.description,
-      duration: this.state.duration,
-    };
-    console.log(exercise);
-    axios.post('http://localhost:5000/exercise/update/'+this.props.match.params.id, exercise)
-      .then(res => console.log(res.data));
-    window.location = '/';
+    axios.put(`http://localhost:5000/exercise/update/${id}`, body)
+      .then(res =>
+        {
+          console.log(res)
+          setPostComplete(true)
+      });
   }
-  render() {
-    return (
-      <div>
-        <h1>Edit Exercise Log</h1>
-        <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label>Username: </label>
-            <input  type="text"
-                required
-                className="form-control"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
-                />
-          </div>
-          <div className="form-group">
-            <label>Description: </label>
-            <input  type="text"
-                required
-                className="form-control"
-                value={this.state.description}
-                onChange={this.onChangeDescription}
-                />
-          </div>
-          <div className="form-group">
-            <label>Exercise Name: </label>
-            <input  type="text"
-                required
-                className="form-control"
-                value={this.state.exerciseName}
-                onChange={this.onChangeExerciseName}
-                />
-          </div>
-          <div className="form-group">
-            <label>Duration (in minutes/sets): </label>
-            <input
-                type="text"
-                className="form-control"
-                value={this.state.duration}
-                onChange={this.onChangeDuration}
-                />
-          </div><br />
-          <div className="form-group">
-            <input type="submit" value="Edit Exercise Log" className="btn btn-primary" />
-          </div>
-        </form>
-      </div>
-    )
-  }
+  return (
+    <div>
+    {postComplete && <Redirect to='/exercise' />}
+      <h1 className="text-white text-center">Edit Exercise Log</h1><br />
+      <br /><form onSubmit={onSubmit}>
+        <div className="form-group">
+          <label className="text-white">Username: </label>
+          <input  type="text"
+              name="username"
+              required
+              className="form-control opacity-75"
+              value={body.username}
+              onChange={onChangeUpdateBody}
+              />
+        </div><br />
+        <br /><div className="form-group">
+          <label className="text-white">Description: </label>
+          <input  type="text"
+              name="description"
+              required
+              className="form-control opacity-75"
+              value={body.description}
+              onChange={onChangeUpdateBody}
+              />
+        </div><br />
+        <br /><div className="form-group">
+          <label className="text-white">Exercise Name: </label>
+          <input  type="text"
+              name="exerciseName"
+              required
+              className="form-control opacity-75"
+              value={body.exerciseName}
+              onChange={onChangeUpdateBody}
+              />
+        </div><br />
+         <br /><div className="form-group">
+          <label className="text-white">Duration (in minutes/sets): </label>
+          <input
+              type="text"
+              name="duration"
+              className="form-control opacity-75"
+              value={body.duration}
+              onChange={onChangeUpdateBody}
+              />
+        </div><br />
+        <div className="form-group">
+          <input type="submit" value="Submit" className="btn btn-success" />
+        </div>
+      </form>
+    </div>
+  )
 }

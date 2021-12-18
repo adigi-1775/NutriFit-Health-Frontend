@@ -42,7 +42,7 @@ import axios from 'axios';
     console.log('heres our nutrition state');
     console.log(this.state);
     return (
-      <div class="text-center"><br />
+      <div className="text-center"><br />
         <br /><h1>Logged Nutrition</h1><br />
         <br /><table className="table table-bordered table-success opacity-75">
           <thead className="thead-light">
@@ -64,7 +64,7 @@ import axios from 'axios';
                 <td>{item.description}</td>
                 <td>{item.calories}</td>
                 <td>
-                  <Link className="btn bg-info text-light font-welcome-buttons text-dark" to={"/edit-nutrition/:id"+item._id}>Edit</Link></td>
+                  <Link className="btn bg-info text-light font-welcome-buttons text-dark" to={"/edit-nutrition/"+item._id}>Edit</Link></td>
                   <td><button className="btn bg-danger text-light font-welcome-buttons text-dark" onClick={() => { this.deleteNutrition(item._id) }}>Delete</button></td>
               </tr>
             )})}

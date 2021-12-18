@@ -68,45 +68,44 @@ window.location = '/';
 render() {
     return (
       <div><br />
-        <br /><h1 class="text-white text-center">Create New Exercise Log</h1>
+        <br /><h1 className="text-success text-center">Create New Exercise Log</h1>
         <br /><form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <br /><label class="fs-5 text-white">Username: </label>
+            <br /><label className="fs-5 text-white">Username: </label>
             <input
                 type="text"
-                className="form-control"
+                className="form-control opacity-75"
                 value={this.state.username}
                 onChange={this.onChangeUsername}
                 />
           </div>
           <div className="form-group">
-            <br /><label class="fs-5 text-white">Exercise Name: </label>
+            <br /><label className="fs-5 text-white">Exercise Name: </label>
             <input
                 type="text"
-                className="form-control"
+                className="form-control opacity-75"
                 value={this.state.exerciseName}
                 onChange={this.onChangeExerciseName}
                 />
           </div>
           <div className="form-group">
-            <br /><label class="fs-5 text-white">Description: </label>
+            <br /><label className="fs-5 text-white">Description: </label>
             <input  type="text"
                 required
-                className="form-control"
+                className="form-control opacity-75"
                 value={this.state.description}
                 onChange={this.onChangeDescription}
                 />
           </div>
           <div className="form-group">
-            <br /><label class="fs-5 text-white">Duration (in minutes/sets): </label>
+            <br /><label className="fs-5 text-white">Duration (in minutes/sets): </label>
             <input
                 type="text"
-                className="form-control"
+                className="form-control opacity-75"
                 value={this.state.duration}
                 onChange={this.onChangeDuration}
                 />
           </div>
-
           <br /><div className="form-group">
             <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
           </div>

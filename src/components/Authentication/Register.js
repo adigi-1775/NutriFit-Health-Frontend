@@ -35,7 +35,7 @@ export default function App(props) {
       <br />
       <button className="login-btn btn bg-success text-light font-welcome-buttons" disabled={ loading || currentUser } onClick={handleSignup}>Register</button><br />
       <br />
-      <Link className="btn bg-primary text-light font-welcome-buttons" class="home-btn" to={"/HomePage"}>Back</Link>
+      <Link className="btn bg-secondary text-light font-welcome-buttons" to={"/HomePage"}>Back</Link>
     </div>
   );
 }

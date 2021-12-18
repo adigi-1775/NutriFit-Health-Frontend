@@ -29,8 +29,8 @@ function App() {
         <Navbar />
           <br/>
           <Switch>
-              <Route path="/edit-exercise/:id" ><EditExercise setbgimage={setbgimage} /></Route>
-              <Route path="/edit-nutrition/:id" ><EditNutrition setbgimage={setbgimage} /></Route>
+              <Route exact path="/edit-exercise/:id" ><EditExercise setbgimage={setbgimage} /></Route>
+              <Route exact path="/edit-nutrition/:id" ><EditNutrition setbgimage={setbgimage} /></Route>
               <Route path="/create-exercise" ><CreateExercise setbgimage={setbgimage} /></Route>
               <Route path="/create-nutrition" ><CreateNutrition setbgimage={setbgimage} /></Route>
               <Route path="/user" ><CreateUser setbgimage={setbgimage} /></Route>

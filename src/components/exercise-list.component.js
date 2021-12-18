@@ -13,7 +13,7 @@ import axios from 'axios';
   componentDidMount() {
     // console.log(Nutrition);
     this.props.setbgimage('images/squat.jpg')
-    axios.get('http://localhost:5000/nutrition/')
+    axios.get('http://localhost:5000/exercise/')
      .then(response => {
        console.log(response.data)
        this.setState({ exercise: response.data });
@@ -42,8 +42,8 @@ import axios from 'axios';
     console.log('heres our exercise state');
     console.log(this.state.exercise);
     return (
-      <div class="text-center"><br />
-        <br /><h1 class="text-white">Logged Exercises</h1><br />
+      <div className="text-center"><br />
+        <br /><h1 className="text-white">Logged Exercises</h1><br />
         <br /><table className="table table-bordered table-success opacity-75">
           <thead className="thead-light">
             <tr>
@@ -64,7 +64,7 @@ import axios from 'axios';
                 <td>{item.description}</td>
                 <td>{item.duration}</td>
                 <td>
-                  <Link className="btn bg-info text-light font-welcome-buttons text-dark" to={"/edit-exercise/:id"+item._id}>Edit</Link></td>
+                  <Link className="btn bg-info text-light font-welcome-buttons text-dark" to={"/edit-exercise/"+item._id}>Edit</Link></td>
                   <td><button className="btn bg-danger text-light font-welcome-buttons text-dark" onClick={() => { this.deleteExercise(item._id)}}>Delete</button></td>
               </tr>
             )})}
