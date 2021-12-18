@@ -20,7 +20,7 @@ export default class CreateExercise extends Component {
 }
 componentDidMount() {
     this.props.setbgimage('images/gymequip.jpg')
-    axios.get('https://nutrifit-health-backend.herokuapp.com/user/')
+    axios.get('https://localhost:5000.com/user/')
   .then(response => {
     if (response.data.length > 0) {
       this.setState({
@@ -61,7 +61,7 @@ onSubmit(e) {
     duration: this.state.duration,
   };
 // console.log(exercise);
-axios.post('https://nutrifit-health-backend.herokuapp.com//exercise/add', exercise)
+axios.post('https://localhost:5000.com/exercise/add', exercise)
   .then(res => console.log(res.data));
 }
 render() {

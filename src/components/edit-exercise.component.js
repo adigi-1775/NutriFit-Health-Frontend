@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams, Redirect } from 'react-router-dom';
@@ -18,7 +18,7 @@ export default function EditExercise() {
   }
   function onSubmit(e) {
     e.preventDefault();
-    axios.put(`https://nutrifit-health-backend.herokuapp.com/exercise/update/${id}`, body)
+    axios.put(`https://localhost:5000.com/exercise/update/${id}`, body)
       .then(res =>
         {
           console.log(res)

@@ -13,7 +13,7 @@ import axios from 'axios';
   componentDidMount() {
     // console.log(Nutrition);
     this.props.setbgimage('images/squat.jpg')
-    axios.get('https://nutrifit-health-backend.herokuapp.com/exercise/')
+    axios.get('https://localhost:5000.com/exercise/')
      .then(response => {
        console.log(response.data)
        this.setState({ exercise: response.data });
@@ -24,7 +24,7 @@ import axios from 'axios';
   }
   deleteExercise(id) {
     console.log(id);
-    axios.delete('https://nutrifit-health-backend.herokuapp.com/exercise/'+id)
+    axios.delete('https://localhost:5000.com/exercise/'+id)
       .then(res => console.log(res.data));
     this.setState({
       exercise: this.state.exercise.filter(el => el._id !== id)
