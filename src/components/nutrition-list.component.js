@@ -14,7 +14,7 @@ import axios from 'axios';
   componentDidMount() {
     // console.log(Nutrition);
     this.props.setbgimage('images/fruitbowl.jpg')
-    axios.get('https://thawing-dawn-15827.herokuapp.com/nutrition/')
+    axios.get('https://thawing-dawn-15827.herokuapp.com/nutrition')
      .then(response => {
        console.log(response.data)
        this.setState({ nutrition: response.data });
