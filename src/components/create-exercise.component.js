@@ -63,7 +63,6 @@ onSubmit(e) {
 // console.log(exercise);
 axios.post('https://thawing-dawn-15827.herokuapp.com/exercise/add', exercise)
   .then(res => console.log(res.data));
-window.location = '/';
 }
 render() {
     return (

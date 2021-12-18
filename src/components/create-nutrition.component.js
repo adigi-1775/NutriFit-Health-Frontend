@@ -61,9 +61,8 @@ onSubmit(e) {
     calories: this.state.calories,
   };
 // console.log(nutrition);
-axios.post('https://thawing-dawn-15827.herokuapp.com/nutrition/add', exercise)
+axios.post('https://thawing-dawn-15827.herokuapp.com/nutrition/add', nutrition)
   .then(res => console.log(res.data));
-window.location = '/';
 }
 render() {
     return (
