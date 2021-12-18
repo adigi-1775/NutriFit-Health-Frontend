@@ -14,7 +14,7 @@ import axios from 'axios';
   componentDidMount() {
     // console.log(Nutrition);
     this.props.setbgimage('images/fruitbowl.jpg')
-    axios.get('https://thawing-dawn-15827.herokuapp.com/nutrition')
+    axios.get('https://nutrifit-health-backend.herokuapp.com/nutrition')
      .then(response => {
        console.log(response.data)
        this.setState({ nutrition: response.data });
@@ -24,7 +24,7 @@ import axios from 'axios';
      })
   }
   deleteNutrition(id) {
-    axios.delete('https://thawing-dawn-15827.herokuapp.com/nutrition/'+id)
+    axios.delete('https://nutrifit-health-backend.herokuapp.com/nutrition/'+id)
       .then(res => console.log(res.data));
     this.setState({
       nutrition: this.state.nutrition.filter(el => el._id !== id)

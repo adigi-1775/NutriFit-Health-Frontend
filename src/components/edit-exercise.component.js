@@ -18,7 +18,7 @@ export default function EditExercise() {
   }
   function onSubmit(e) {
     e.preventDefault();
-    axios.put(`https://thawing-dawn-15827.herokuapp.com/exercise/update/${id}`, body)
+    axios.put(`https://nutrifit-health-backend.herokuapp.com/exercise/update/${id}`, body)
       .then(res =>
         {
           console.log(res)
