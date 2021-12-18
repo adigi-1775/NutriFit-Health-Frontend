@@ -54,7 +54,7 @@ onChangeCalories(e) {
 }
 onSubmit(e) {
   e.preventDefault();
-  const exercise = {
+  const nutrition = {
     username: this.state.username,
     meal: this.state.meal,
     description: this.state.description,
