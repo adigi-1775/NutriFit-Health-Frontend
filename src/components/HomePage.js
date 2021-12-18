@@ -4,6 +4,7 @@ export default function HomePage(props){
   useEffect(()=>{
     props.setbgimage('images/smoothie.jpg')
     }, [])
+    
     return(
       <div className="HomePage" className="text-center"><br />
       <br /><h1>Welcome to NutriFit-Health!</h1><br />
