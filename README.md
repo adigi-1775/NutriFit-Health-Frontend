@@ -5,6 +5,7 @@ Backend: Express, mongodb through Atlas
 Login/register: firebase
 
 Deployed on Heroku:  
+https://nutrifit-health-frontend.herokuapp.com/nutrition
 
 Github links
 Frontend: https://github.com/adigi-1775/NutriFit-Health-Frontend
